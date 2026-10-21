@@ -1,0 +1,30 @@
+identity:
+  author: "cotletdev"
+  name: "cotlet"
+  label:
+    en_US: "Cotlet"
+  description:
+    en_US: "Cotlet is a hosted MCP server and REST API that lets AI agents use apps with no API, signed in as you."
+  icon: "icon.png"
+  tags:
+    - productivity
+    - business
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: "Cotlet API key"
+    placeholder:
+      en_US: "Paste your Cotlet API key"
+    help:
+      en_US: "Create it at https://cotlet.dev/app, API keys."
+    url: "https://cotlet.dev/docs/api"
+tools:
+  - tools/list_apps.yaml
+  - tools/get_app.yaml
+  - tools/get_endpoint.yaml
+  - tools/call_endpoint.yaml
+extra:
+  python:
+    source: provider/cotlet.py

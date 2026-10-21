@@ -1,0 +1,22 @@
+identity:
+  name: get_app
+  author: cotletdev
+  label:
+    en_US: Get app
+description:
+  human:
+    en_US: Show one app and its endpoints (name, method and path).
+  llm: "Get one Cotlet app by slug and list its endpoints with name, HTTP method and path. Use after list_apps. The path is exactly what call_endpoint expects (placeholders like {group} must be replaced with real values). Next step: get_endpoint for the input schema, then call_endpoint."
+parameters:
+  - name: app
+    type: string
+    required: true
+    label:
+      en_US: App slug
+    human_description:
+      en_US: The app slug from List apps, for example skool.
+    llm_description: App slug taken from list_apps, for example skool.
+    form: llm
+extra:
+  python:
+    source: tools/get_app.py

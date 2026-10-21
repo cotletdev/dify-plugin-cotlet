@@ -1,0 +1,66 @@
+identity:
+  name: call_endpoint
+  author: cotletdev
+  label:
+    en_US: Call endpoint
+description:
+  human:
+    en_US: Call a Cotlet endpoint with your API key. Actions that reach other people wait for your approval.
+  llm: "Call a Cotlet endpoint as the user (requires the Cotlet API key). Do not guess: first use list_apps, get_app and get_endpoint to learn the app slug, method, path and input schema, then call_endpoint. path is the part after the app slug, e.g. groups/mygroup/members, with {placeholders} replaced. params_json is a JSON object: query parameters for GET and DELETE, request body for POST, PUT and PATCH. If the result has status pending and an approval_url, the action has NOT run yet: tell the user to approve it at that URL."
+parameters:
+  - name: app
+    type: string
+    required: true
+    label:
+      en_US: App slug
+    human_description:
+      en_US: The app slug, for example skool.
+    llm_description: App slug taken from list_apps, for example skool.
+    form: llm
+  - name: method
+    type: select
+    required: true
+    default: GET
+    label:
+      en_US: HTTP method
+    human_description:
+      en_US: The HTTP method of the endpoint.
+    llm_description: HTTP method of the endpoint, as shown by get_app.
+    form: llm
+    options:
+      - value: GET
+        label:
+          en_US: GET
+      - value: POST
+        label:
+          en_US: POST
+      - value: PUT
+        label:
+          en_US: PUT
+      - value: PATCH
+        label:
+          en_US: PATCH
+      - value: DELETE
+        label:
+          en_US: DELETE
+  - name: path
+    type: string
+    required: true
+    label:
+      en_US: Path
+    human_description:
+      en_US: The path after the app slug, for example groups/mygroup/members.
+    llm_description: Path after the app slug, as shown by get_app, with placeholders replaced by real values. No leading app slug, no query string.
+    form: llm
+  - name: params_json
+    type: string
+    required: false
+    label:
+      en_US: Parameters (JSON)
+    human_description:
+      en_US: Optional JSON object with the inputs of the endpoint.
+    llm_description: "Optional JSON object string with the endpoint inputs, matching the schema from get_endpoint. Sent as query parameters for GET and DELETE, as JSON body for POST, PUT and PATCH. Example {\"limit\": 20}."
+    form: llm
+extra:
+  python:
+    source: tools/call_endpoint.py

@@ -1,0 +1,32 @@
+version: 0.0.1
+type: plugin
+author: cotletdev
+name: cotlet
+label:
+  en_US: Cotlet
+description:
+  en_US: Cotlet is a hosted MCP server and REST API that lets AI agents use apps with no API, signed in as you.
+icon: icon.png
+resource:
+  memory: 268435456
+  permission: {}
+plugins:
+  tools:
+    - provider/cotlet.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: 1.5.0
+created_at: 2026-10-21T20:21:47.366028+02:00
+contact: contact@cotlet.dev
+privacy: PRIVACY.md
+network:
+  domains:
+    - cotlet.dev
+verified: false

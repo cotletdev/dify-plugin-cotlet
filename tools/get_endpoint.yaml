@@ -1,0 +1,31 @@
+identity:
+  name: get_endpoint
+  author: cotletdev
+  label:
+    en_US: Get endpoint
+description:
+  human:
+    en_US: Show the input schema and an example response of one endpoint.
+  llm: "Get the JSON Schema of an endpoint's input and an example response. Use after get_app and before call_endpoint, so the params_json you send matches the schema (unknown fields are rejected). Also tells whether the endpoint needs the account owner's approval."
+parameters:
+  - name: app
+    type: string
+    required: true
+    label:
+      en_US: App slug
+    human_description:
+      en_US: The app slug, for example skool.
+    llm_description: App slug taken from list_apps, for example skool.
+    form: llm
+  - name: endpoint
+    type: string
+    required: true
+    label:
+      en_US: Endpoint name
+    human_description:
+      en_US: The endpoint name from Get app, for example list_groups.
+    llm_description: Endpoint name (the name field, not the path) taken from get_app, for example list_groups.
+    form: llm
+extra:
+  python:
+    source: tools/get_endpoint.py

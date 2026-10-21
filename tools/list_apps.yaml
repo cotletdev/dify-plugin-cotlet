@@ -1,0 +1,22 @@
+identity:
+  name: list_apps
+  author: cotletdev
+  label:
+    en_US: List apps
+description:
+  human:
+    en_US: List the apps Cotlet can work with, optionally filtered by a search word.
+  llm: "List the apps available in Cotlet (slug, name, summary, endpoints count, docs URL). Start here: use list_apps to find the app slug, then get_app to see its endpoints, then get_endpoint for an endpoint's input schema, and only then call_endpoint. Optional query filters by slug, name or category."
+parameters:
+  - name: query
+    type: string
+    required: false
+    label:
+      en_US: Filter
+    human_description:
+      en_US: Optional word to filter apps by slug, name or category.
+    llm_description: Optional word to filter apps by slug, name or category (case-insensitive). Leave empty to list all apps.
+    form: llm
+extra:
+  python:
+    source: tools/list_apps.py
