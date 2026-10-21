@@ -38,4 +38,4 @@ Inputs go in the query string for GET and DELETE, and in a JSON body for POST, P
 - Supported apps: https://cotlet.dev/integrations
 - Privacy: https://cotlet.dev/privacy (see also `PRIVACY.md`)
 - Contact: https://cotlet.dev/contact
-- Source repository: TODO before submission (public URL of this plugin's repository)
+- Source repository: https://github.com/cotletdev/dify-plugin-cotlet
