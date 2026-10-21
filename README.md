@@ -6,6 +6,10 @@ Cotlet lets your AI agent use the apps that never built an API. Connect an app o
 
 This plugin brings the same REST API to Dify agents and workflows (for example Skool, Substack, Milanote or Partiful).
 
+## Security
+
+Cotlet never stores passwords. It keeps only the app session, in an AES-256 vault, and the model never sees it. Actions that reach other people wait for your approval, and credits for failed calls are refunded.
+
 Cotlet is an independent service and is not affiliated with the apps it integrates.
 
 ## Setup
@@ -23,7 +27,7 @@ Cotlet is an independent service and is not affiliated with the apps it integrat
 | `get_endpoint` | Returns an endpoint's input schema and an example response. | No |
 | `call_endpoint` | Calls an endpoint: app, method, path and an optional JSON object of inputs. | Yes |
 
-Inputs go in the query string for GET and DELETE, and in a JSON body for POST, PUT and PATCH. Actions that reach other people (publish, message, email) return `202` with `status: pending` and an `approval_url`; nothing runs until you approve it there. Errors come back as Cotlet's own error JSON with the HTTP status.
+Inputs go in the query string for GET and DELETE, and in a JSON body for POST, PUT and PATCH. Actions that reach other people (publish, message, email) return `202` with `status: pending` and an `approval_url`; nothing runs until you approve it there. Errors come back as Cotlet's own error JSON with the HTTP status. If your account has no access to an app yet, the response says so and links to the page where you turn it on or request it; nothing is charged.
 
 ## Example flow
 
